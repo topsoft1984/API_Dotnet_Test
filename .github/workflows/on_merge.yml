@@ -7,8 +7,7 @@ jobs:
   container:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: ./.github/actions/container
+     
         with:
           docker_repo: trialk033s3.jfrog.io/docker-trial/docker-trial_brahim
           docker_user: brahim.halil1984@gmail.com
