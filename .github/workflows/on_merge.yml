@@ -8,8 +8,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/actions/container
+      - uses: actions/setup-dotnet@v4
         with:
-          docker_repo: trialk033s3.jfrog.io/docker-trial/docker-trial_brahim
-          docker_user: brahim.halil1984@gmail.com
-          docker_token: ${{ secrets.JFROG_DOCKER_TOKEN }}
+          dotnet-version: '8.0.x'
+      - run: dotnet build API_Dotnet_TEST
+      - run: |
+          nuget sources Add -Name Artifactory -Source https://trialk033s3.jfrog.io/artifactory/api/nuget/v3/paris-nuget -username brahim -password ${{ secrets.JFROG_NUGET_TOKEN }}
+          nuget setapikey brahim:${{ secrets.JFROG_NUGET_TOKEN }} -Source Artifactory
+          nuget push API_Dotnet_TEST -Source Artifactory
+      #- uses: ./.github/actions/container
+      #  with:
+      #    docker_repo: trialk033s3.jfrog.io/docker-trial/docker-trial_brahim
+      #    docker_user: brahim.halil1984@gmail.com
+      #    docker_token: ${{ secrets.JFROG_DOCKER_TOKEN }}
