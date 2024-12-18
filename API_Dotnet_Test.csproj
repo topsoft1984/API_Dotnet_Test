@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
+ 
 
  
   <PropertyGroup>
@@ -7,6 +8,13 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+
+ <PackageId>123456</PackageId>
+  <Version>2.0.0</Version>
+  <Authors>HALIL IBRAHIM</Authors>
+  <Company>SGA</Company>
+  <Description>Package test</Description>
+  <PackageTags>tags, liés, à, votre, package</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
